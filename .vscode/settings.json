@@ -1,4 +1,9 @@
 {
     "browser-preview.startUrl": "file:///home/zhenrong1999/Projects/ans1-cpt324/gasket4.html",
-    "browser-preview.format": "png"
+    "browser-preview.format": "png",
+    "kite.enableOptionalCompletionsTriggers": true,
+    "javascript.referencesCodeLens.showOnAllFunctions": true,
+    "javascript.referencesCodeLens.enabled": true,
+    "javascript.suggest.completeFunctionCalls": true,
+    "browser-preview.verbose": true
 }

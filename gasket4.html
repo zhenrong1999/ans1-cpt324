@@ -32,11 +32,79 @@
 		<script type="text/javascript" src="./Common/initShaders.js"></script>
 		<script type="text/javascript" src="./Common/MV.js"></script>
 		<script type="text/javascript" src="gasket4.js"></script>
+		<style>
+			.flex-container {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+			}
+			.main {
+				flex: auto;
+			}
+			#gl-canvas{
+				border:white 3px solid;
+				margin:50px 50px;
+				width:512px;
+				height:512px;
+			}
+			.side {
+				flex: 30%;
+			}
+			.side Button {
+				width: 85px;
+				height: 40px;
+				border-radius: 12px;
+				font-size: 16px;
+				border: 0px;
+				display: block;
+				transition-duration: 0.4s;
+				margin: 10px;
+				color: #111122;
+			}
+			.side Button:hover {
+				background-color: #111122;
+				color: white;
+			}
+			@media screen and (max-width: 700px) {
+				.side,
+				.main {
+					flex-direction: column;
+				}
+			}
+		</style>
 	</head>
 
-	<body style="background-color: #000102">
-		<canvas id="gl-canvas" width="512" height="512">
-			Oops ... your browser doesn't support the HTML5 canvas element
-		</canvas>
+	<body style="background-color: #000102; color: white">
+		<div class="flex-container">
+			<div class="main" style="position: relative">
+				<canvas id="gl-canvas" width="512" height="512">
+					Oops ... your browser doesn't support the HTML5 canvas element
+				</canvas>
+			</div>
+
+			<div class="side" style="position: relative">
+				<li>
+					<button id="stop-play-button" onclick="change_state(this)">
+						Stop
+					</button>
+					<div style="display: inline-block">
+						speed 0
+						<input
+							id="slide"
+							type="range"
+							min="0"
+							max="100"
+							step="1"
+							value="50"
+							onchange="change_speed(this);"
+						/>
+						100
+						<p id="current_speed">50</p>
+						<p id="current_rotation">0</p>
+						<p id="current_animation"></p>
+					</div>
+				</li>
+			</div>
+		</div>
 	</body>
 </html>
