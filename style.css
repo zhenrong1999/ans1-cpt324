@@ -1,3 +1,64 @@
-body {
-	background-color: #000102;
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	border-collapse: collapse;
+	
+}
+li {
+	border: white 1px solid;
+	padding:5px;
+
+}
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+th,
+td {
+	padding: 2px;
+	text-align: left;
+	border: 1px solid whitesmoke;
+}
+.col2Attribute {
+	width: 170px;
+}
+.flex-container {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+.main {
+	flex: auto;
+}
+#gl-canvas {
+	border: white 3px solid;
+	margin: 50px 50px;
+	width: 512px;
+	height: 512px;
+}
+.side {
+	flex: 35%;
+	padding-right: 50px;
+}
+.side Button {
+	width: 85px;
+	height: 40px;
+	border-radius: 12px;
+	font-size: 16px;
+	border: 0px;
+	transition-duration: 0.4s;
+	margin: 10px;
+	color: #111122;
+}
+.side Button:hover {
+	background-color: #111122;
+	color: white;
+}
+	
+@media screen and (max-width: 700px) {
+	.side,
+	.main {
+		flex-direction: column;
+	}
 }

@@ -32,45 +32,9 @@
 		<script type="text/javascript" src="./Common/initShaders.js"></script>
 		<script type="text/javascript" src="./Common/MV.js"></script>
 		<script type="text/javascript" src="gasket4.js"></script>
+		<link rel="stylesheet" href="style.css">
 		<style>
-			.flex-container {
-				display: flex;
-				flex-wrap: wrap;
-				align-items: center;
-			}
-			.main {
-				flex: auto;
-			}
-			#gl-canvas{
-				border:white 3px solid;
-				margin:50px 50px;
-				width:512px;
-				height:512px;
-			}
-			.side {
-				flex: 30%;
-			}
-			.side Button {
-				width: 85px;
-				height: 40px;
-				border-radius: 12px;
-				font-size: 16px;
-				border: 0px;
-				display: block;
-				transition-duration: 0.4s;
-				margin: 10px;
-				color: #111122;
-			}
-			.side Button:hover {
-				background-color: #111122;
-				color: white;
-			}
-			@media screen and (max-width: 700px) {
-				.side,
-				.main {
-					flex-direction: column;
-				}
-			}
+			
 		</style>
 	</head>
 
@@ -83,27 +47,107 @@
 			</div>
 
 			<div class="side" style="position: relative">
-				<li>
-					<button id="stop-play-button" onclick="change_state(this)">
-						Stop
-					</button>
-					<div style="display: inline-block">
-						speed 0
+				<ul>
+					<li>
+						<button id="stop-play-button" onclick="change_state(this)">
+							Stop</button
+						><button id="reset-button" onclick="reset_state()">Reset</button>
+					</li>
+					<li>
+						<div id="speed-slider" style="display: inline-block">
+							speed 0
+							<input
+								id="slide"
+								name="speed"
+								type="range"
+								min="0"
+								max="100"
+								step="1"
+								value="50"
+								onchange="change_speed(this);"
+							/>
+							100 Speed:
+							<label for="speed" id="current_speed"></label>
+						</div>
+					</li>
+					<li>
+						<label for="Num Times To Subdivide"
+							>Num Times To Subdivide (between 1 and 8):</label
+						>
 						<input
-							id="slide"
-							type="range"
+							type="number"
+							id="NumTimesToSubdivide_input"
+							name="Num Times To Subdivide"
 							min="0"
-							max="100"
-							step="1"
-							value="50"
-							onchange="change_speed(this);"
+							max="8"
+							value="3"
+							onchange="NumTimesToSubdivideFunc(this.value)"
 						/>
-						100
-						<p id="current_speed">50</p>
-						<p id="current_rotation">0</p>
-						<p id="current_animation"></p>
-					</div>
-				</li>
+					</li>
+					<li>
+						<label for="favcolor">Select your favorite color:</label>
+						<input
+							type="color"
+							class="color-picker"
+							id="fcolor1"
+							name="favcolor"
+							value="#000000"
+							onchange="change_color()"
+						/>
+						<input
+							type="color"
+							class="color-picker"
+							id="fcolor3"
+							name="favcolor"
+							value="#000000"
+							onchange="change_color()"
+						/>
+						<input
+							type="color"
+							class="color-picker"
+							id="fcolor2"
+							name="favcolor"
+							value="#000000"
+							onchange="change_color()"
+						/>
+					</li>
+					<li>
+						<table>
+							<tr>
+								<th>Attributes</th>
+								<th class="col2Attribute">Value</th>
+							</tr>
+							<tr>
+								<td>Current Speed</td>
+								<td class="col2Attribute" id="current_speed_table">50</td>
+							</tr>
+							<tr>
+								<td>Current Animation</td>
+								<td class="col2Attribute" id="current_animation">1</td>
+							</tr>
+							<tr>
+								<td>Current Rotation</td>
+								<td class="col2Attribute" id="current_rotation">0</td>
+							</tr>
+							<tr>
+								<td>Current Scaling</td>
+								<td class="col2Attribute" id="current_scaling">0</td>
+							</tr>
+							<tr>
+								<td>Current Position</td>
+								<td class="col2Attribute" id="current_position">0</td>
+							</tr>
+							<tr>
+								<td>Frame Rendered Time</td>
+								<td class="col2Attribute" id="delta_time">0</td>
+							</tr>
+							<tr>
+								<td>Frame Per Second</td>
+								<td class="col2Attribute" id="fps">0</td>
+							</tr>
+						</table>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</body>
